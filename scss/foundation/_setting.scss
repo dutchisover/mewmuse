@@ -1,0 +1,171 @@
+////////////// SCSS変数 //////////////
+
+// 色
+$color_black: #333;
+$color_key: #cd0f3a;
+$color_sub: #f29f99;
+$color_link: #dc1e37;
+$color_hover: rgba($color_link, .8);
+$color_who: #fcbaba;
+$color_work: #18c0d1;
+$color_member: #7dd8c6;
+$color_contact: #f7f7f7;
+$color_gradient: linear-gradient(-35deg, rgba(255, 255, 179, 1) 0%, rgba(141, 203, 207, 1) 42.97%, rgba(0, 69, 99, 1) 100%);
+
+$color_bg_light: #fcefeb;
+
+// フォント
+$gothic: '游ゴシック体', 'Yu Gothic', YuGothic, 'ヒラギノ角ゴ Pro', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'MS Pゴシック', 'MS PGothic', sans-serif;
+$mincho: '游明朝体', 'Yu Mincho', YuMincho, 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'MS P明朝', 'MS PMincho', serif;
+
+// ウェイト
+$light: 400;
+$medium: 500;
+$bold: 700;
+$bold_ios: 600;
+$bolder: 700;
+
+// アニメーション速度
+$speed: .6s;
+
+// 標準のline-height
+$line_height: 1.75;
+
+
+
+////////////// CSS変数 //////////////
+
+:root {
+  // --hoge: "";
+}
+
+
+
+
+////////////// Mixin //////////////
+
+//コンテンツ幅（px）
+$sm: 520;
+$md: 768;
+$lg: 900;
+$xl: 1080;
+$mx: 1280;
+
+
+
+//メディアクエリ
+$breakpoints: (
+    'def': '(max-width: #{$md}px)',
+    'sm': '(max-width: #{$sm}px)',
+    'md': '(max-width: #{$md}px)',
+    'lg': '(max-width: #{$lg}px)',
+    'xl': '(max-width: #{$xl}px)',
+    'mx': '(max-width: #{$mx}px)',
+    'pc_only': '(min-width: #{$md+1}px)',
+    ) !default;
+
+//コンテンツ幅
+$wrapper: (
+    'sm': #{$sm},
+    'md': #{$md},
+    'lg': #{$lg},
+    'xl': #{$xl},
+    'mx': #{$mx},
+    ) !default;
+
+
+//メディアクエリ
+@mixin media($breakpoint: md) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+// 使用例
+// @include mq() {
+//     color: red;
+// }
+
+
+
+// wrapper自動化
+// @mixin cp_wrapper($max: xl, $w: 90%) {
+//   width: $w;
+//   max-width: #{map-get($wrapper, $max)}px;
+//   margin-right: auto;
+//   margin-left: auto;
+
+//   @include media() {
+//     width: 94%;
+//   }
+
+//   @content;
+// }
+
+// 使用例
+// @include cp_wrapper($max: sm);
+
+
+
+
+
+// clamp自動化
+// @function clp($f: 16, $max: mx) {
+//   $mw: #{map-get($wrapper, $max)};
+//   $ft: $f * 1vw;
+//   @return clamp(#{$f * .65}px, calc(#{$ft} / #{$mw} * 90), #{$f}px
+//   );
+// }
+
+// 使用例
+// font-size: clp(20);
+
+
+
+
+
+// vw自動化（スマホ専用）
+$board: 375; //スマホカンプのアートボード幅を入れてください
+
+@function vw($f: 16, $bd: $board) {
+  @return #{$f / $bd * 10}vw;
+}
+
+// 使用例
+// font-size: vw(20);
+
+
+
+
+// 行間の上下余白を消しながら line-height を設定する
+@mixin lineHeight($line-height: #{$line_height}) {
+  line-height: #{$line-height};
+
+  &::before, &::after {
+    display: block;
+    width: 0;
+    height: 0;
+    content: '';
+  }
+
+  &::before {
+    margin-top: calc((1 - #{$line-height}) * .5em); //文字上の余白を消す
+  }
+
+  &::after {
+    margin-bottom: calc((1 - #{$line-height}) * .5em); //文字下の余白を消す
+  }
+}
+
+
+// ホバー
+@mixin hover() {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+
+// 非サポート

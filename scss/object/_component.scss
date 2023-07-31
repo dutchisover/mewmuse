@@ -1,0 +1,15 @@
+// Component = 繰り返し使う部品
+
+@use '../foundation/setting' as *;
+
+
+.button {
+  //
+  @include hover {
+    //
+  }
+
+  &_area {
+    //
+  }
+}

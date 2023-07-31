@@ -1,0 +1,58 @@
+@use './setting' as *;
+
+
+// ページ内リンクにアニメーション付与
+html {
+  font-size: clamp(calc(6.25% * .25), calc(10vw / 1180 * 10), 6.25%);
+
+  @include media() {
+    font-size: vw(10);
+  }
+}
+
+// サイト全体の基本設定
+body {
+  // letter-spacing: .1em;
+  color: $color_black;
+  font-weight: $medium;
+  font-size: 18rem; //サイト基準のフォントサイズ
+  // font-feature-settings: 'palt';
+  font-family: $gothic;
+  line-height: $line_height;
+
+  // 行間の上下余白を消す（Figmaの時は不要）
+  // & :where(h1, h2, h3, h4, h5, h6, p) {
+  //   @include lineHeight($line_height);
+  // }
+
+  a {
+    transition: color .4s;
+
+    &:focus {
+      text-decoration: none;
+    }
+
+    img {
+      transition: opacity .4s;
+    }
+
+    &[href^='tel:'] {
+      color: inherit;
+    }
+  }
+
+  // 画像全て適用　はみ出さないようにしてすき間できるバグ対策
+  img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+  }
+
+  *,
+  *::before,
+  *::after {
+    @include media() {
+      max-width: 100%;
+    }
+  }
+}
