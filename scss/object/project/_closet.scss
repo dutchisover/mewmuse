@@ -1,0 +1,113 @@
+@use '../../foundation/index' as *;
+
+// Closet
+.artist_closet {
+  // padding-top: 280rem;
+  padding-bottom: 150rem;
+
+  @include media() {
+    padding-bottom: 100rem;
+  }
+
+  &_title_area {
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+    width: 270rem;
+
+    @include media() {
+      width: 135rem;
+    }
+  }
+
+  &_logo {
+    width: 100%;
+    opacity: .1;
+  }
+
+  &_title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 70rem;
+    font-family: $english;
+    transform: translate(-50%, -50%);
+
+    @include media() {
+      font-size: 34rem;
+    }
+  }
+
+  &_container {
+    margin: 110rem auto 0;
+    width: 860rem;
+
+    @include media() {
+      margin-top: 50rem;
+    }
+
+    &:first-of-type {
+      margin-top: 110rem;
+    }
+  }
+
+  &_content {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    row-gap: 90rem;
+    @include media() {
+      justify-content: flex-start;
+      margin: auto;
+      width: 280rem;
+
+      row-gap: 60rem;
+    }
+  }
+
+  &_item {
+    display: flex;
+    justify-content: center;
+
+    @include media() {
+      width: 140rem !important;
+      height: 216rem;
+    }
+  }
+
+  &_image {
+    // width: 110rem;
+    width: auto !important;
+  }
+
+  &_name {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin: 80rem auto 0;
+    width: 495rem;
+    height: 90rem;
+    background-image: url(../image/artist_closet_name.svg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    @include media() {
+      margin-top: 60rem;
+    }
+
+    & p {
+      text-align: center;
+      font-weight: 700;
+      font-size: 25rem;
+      font-family: $mincho;
+
+      @include media() {
+        font-size: 17rem;
+      }
+    }
+  }
+}

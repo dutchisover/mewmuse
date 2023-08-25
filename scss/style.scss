@@ -1,6 +1,3 @@
-@charset 'utf-8';
-
-
 // 初期設定
 @use './foundation/reset';
 @use './foundation/animate';
@@ -19,11 +16,20 @@
 
 
 // 特定のセクションやエリア
+@use './object/project/single';
+@use './object/project/page';
+@use './object/project/archive';
 @use './object/project/mv';
 @use './object/project/top';
+@use './object/project/artist';
+@use './object/project/closet';
+@use './object/project/faq';
+@use './object/project/schedule';
+@use './object/project/news';
+@use './object/project/recruit';
 @use './object/project/about';
-@use './object/project/single';
-@use './object/project/archive';
+@use './object/project/form';
+@use './object/project/page404';
 
 
 // 強制的に上書き

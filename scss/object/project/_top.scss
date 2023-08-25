@@ -1,14 +1,465 @@
-@use '../../foundation/setting' as *;
+@use '../../foundation/index' as *;
 
-.mv {
-  //
+main.top {
+  padding-top: 0;
+  padding-bottom: 260rem;
+
+  @include media() {
+    padding-bottom: 100rem;
+  }
 }
 
-.top {
-  //
+.top_concept {
+  position: relative;
+  margin-top: 200rem;
+  padding: 216rem 0;
+  width: 1300rem;
+  background-image: url(../image/top_concept_bg.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  text-align: center;
+
+  @include media() {
+    margin-top: 100rem;
+    padding: 100rem 0;
+    width: 334rem;
+    background-image: url(../image/top_concept_bg-sp.png);
+  }
+
+  &_title {
+    letter-spacing: .02em;
+    font-size: 50rem;
+    font-family: $mincho;
+
+    @include media() {
+      font-size: 30rem;
+      line-height: 2;
+    }
+  }
+
+  &_subtitle {
+    margin-top: 70rem;
+    font-size: 28rem;
+    font-family: $mincho;
+    line-height: 1.785;
+
+    @include media() {
+      font-size: 16rem;
+      line-height: 2.1875;
+    }
+  }
+
+  &_text {
+    margin-top: 50rem;
+    letter-spacing: .03em;
+    line-height: 2.77;
+
+    @include media() {
+      margin: 50rem auto 0;
+      width: 280rem;
+      font-size: 12rem;
+      line-height: 2.16;
+    }
+  }
+
+  // &_content {
+  //   position: absolute;
+  //   top: 50%;
+  //   left: 50%;
+  //   width: 100%;
+  //   transform: translate(-50%, -50%);
+  // }
+}
+
+.fluid {
+  width: 100%;
+}
+
+.top_artist {
+  &_container {
+    position: relative;
+    margin-top: 210rem;
+    padding-top: 200rem;
+
+    @include media() {
+      margin-top: 80rem;
+      padding-top: 70rem;
+    }
+  }
+
+  &_title {
+    position: absolute;
+    top: 0;
+    left: -100rem;
+    color: rgba(68, 68, 68, .15);
+    font-size: 300rem;
+    font-family: $english;
+
+    user-select: none;
+    @include media() {
+      top: 0;
+      left: -20rem;
+      font-size: 100rem;
+    }
+  }
+
+  &_list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &_photo {
+    width: 520rem;
+    height: 400rem;
+    object-fit: cover;
+    transition: .6s all;
+
+    @include media() {
+      width: 300rem;
+      height: 230rem;
+    }
+
+    &_box {
+      overflow: hidden;
+      width: 520rem;
+      height: 400rem;
+      box-shadow: 5rem 5rem 10rem rgba(29, 53, 83, .4);
+
+      @include media() {
+        width: 300rem;
+        height: 230rem;
+      }
+    }
+  }
+
+  &_box {
+    position: relative;
+    width: 570rem;
+
+    @include media() {
+      width: 316rem;
+    }
+
+    &:nth-child(n+3) {
+      margin-top: 100rem;
+    }
+
+    &:nth-child(n+2) {
+      @include media() {
+        margin-top: 80rem;
+      }
+    }
+  }
+
+  .top_more_button {
+    position: absolute;
+    right: 0;
+    bottom: -30rem;
+    transition: .6s all;
+
+    @include media() {
+      bottom: -20rem;
+      width: 100rem;
+    }
+  }
+}
+
+
+.top_schedule {
+  position: relative;
+  margin-top: 350rem;
+
+  @include media() {
+    margin-top: 150rem;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -70rem;
+    left: 0;
+    z-index: -1;
+    display: block;
+    width: 700rem;
+    height: 650rem;
+    background-image: url(../image/top_bg-left.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: .8;
+
+    @include media() {
+      top: -20rem;
+      width: 300rem;
+      height: 270rem;
+      background-image: url(../image/top_bg-left-sp.png);
+    }
+  }
+
+  &_content {
+    @include media() {
+      width: 334rem;
+    }
+  }
+
+  &_title {
+    font-size: 70rem;
+    font-family: $english;
+
+    @include media() {
+      font-size: 30rem;
+    }
+  }
+
+  &_list {
+    display: flex;
+    gap: 48rem;
+    margin-top: 60rem;
+
+    @include media() {
+      flex-direction: column;
+      gap: 30rem;
+      margin-top: 40rem;
+    }
+  }
+
+  &_list_item {
+    width: 264rem;
+
+    @include media() {
+      width: 100%;
+    }
+  }
+
+  &_item {
+    display: flex;
+    flex-direction: column;
+
+    @include media() {
+      flex-direction: row;
+    }
+  }
+
+  &_list_label {
+    display: flex;
+    align-items: center;
+    margin-top: 25rem;
+
+    @include media() {
+      margin-top: 0;
+    }
+  }
+
+  &_list_date {
+    margin-right: 15rem;
+    font-size: 14rem;
+    font-family: $english;
+
+    @include media() {
+      font-size: 11rem;
+    }
+  }
+
+  &_list_cat {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: .25em 2em;
+    min-width: 90rem;
+    min-height: 20rem;
+    border-radius: 20rem;
+    word-break: break-all;
+    font-size: 12rem;
+    font-family: $english;
+    line-height: 1;
+
+    @include media() {
+      min-width: 88rem;
+      min-height: 16rem;
+      font-size: 11rem;
+    }
+  }
+
+  &_list_title {
+    margin-top: 15rem;
+    font-size: 16rem;
+    line-height: 2;
+
+    @include media() {
+      font-size: 13rem;
+    }
+  }
+
+  &_image_box {
+    overflow: hidden;
+    width: 264rem;
+    height: 180rem;
+    object-position: center;
+
+    @include media() {
+      width: 120rem;
+      height: 90rem;
+    }
+  }
+
+  &_image {
+    width: 264rem;
+    height: 180rem;
+    object-fit: cover;
+    object-position: center;
+    transition: .6s all;
+
+    @include media() {
+      width: 120rem;
+      height: 90rem;
+    }
+  }
+
+  &_text_box {
+    @include media() {
+      margin-left: 10rem;
+      width: 204rem;
+    }
+  }
 }
 
 
 .top_news {
-  //
+  position: relative;
+  margin-top: 280rem;
+
+  @include media() {
+    margin-top: 120rem;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    display: block;
+    width: 990rem;
+    height: 610rem;
+    background-image: url(../image/top_bg-right.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: .8;
+
+    @include media() {
+      width: 291rem;
+      height: 257rem;
+      background-image: url(../image/top_bg-right-sp.png);
+    }
+  }
+
+  &_list {
+    margin-top: 50rem;
+
+    @include media() {
+      margin-top: 20rem;
+    }
+  }
+
+  &_list_item {
+    padding: 30rem 30rem 20rem 30rem;
+    border-bottom: 1rem solid $color_black;
+
+    @include media() {
+      padding: 20rem 0;
+    }
+  }
+
+  &_title {
+    text-align: center;
+    font-size: 90rem;
+    font-family: $english;
+
+    @include media() {
+      font-size: 30rem;
+    }
+  }
+
+
+  &_item {
+    display: flex;
+    align-items: center;
+
+    @include media() {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+
+  & .news_list_label {
+    margin-right: 150rem;
+
+    @include media() {
+      margin-right: 0;
+    }
+  }
+
+  & .news_list_date {
+    @include media() {
+      font-size: 13rem;
+    }
+  }
+
+  & .news_list_cat {
+    @include media() {
+      min-width: 60rem;
+      min-height: 17rem;
+      font-size: 12rem;
+    }
+  }
+
+  &_list_title {
+    @include media() {
+      margin-top: 15rem;
+      font-size: 13rem;
+      line-height: 2;
+    }
+  }
+}
+
+.top_link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 20rem;
+  font-family: $english;
+
+  @include media() {
+    font-size: 13rem;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    margin-left: 15rem;
+    width: 8rem;
+    height: 8rem;
+    border-top: 1rem solid $color_black ;
+    border-right: 1rem solid $color_black;
+    transform: rotate(45deg);
+
+    @include media() {
+      width: 5rem;
+      height: 5rem;
+    }
+  }
+
+  .top_news & {
+    margin-top: 20rem;
+  }
+
+  .top_schedule & {
+    @include media() {
+      margin-top: -36rem;
+    }
+  }
 }

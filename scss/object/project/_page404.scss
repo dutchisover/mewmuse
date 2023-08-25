@@ -1,0 +1,65 @@
+@use '../../foundation/index' as *;
+
+.page404 {
+  @include media() {
+    padding-top: 170rem;
+  }
+
+  &_title {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 90rem;
+    font-size: 90rem;
+    font-family: $english;
+    line-height: 1.75;
+
+    @include media() {
+      margin-bottom: 50rem;
+      font-size: 40rem;
+      line-height: 2;
+    }
+
+    &::before,
+    &::after {
+      content: none;
+    }
+
+    span {
+      font-size: 28rem;
+      font-family: $mincho;
+
+      @include media() {
+        font-size: 16rem;
+      }
+    }
+  }
+
+  &_text {
+    text-align: center;
+    font-size: 18rem;
+    line-height: 2.22222222;
+
+    @include media() {
+      font-size: 12rem;
+
+      & + & {
+        margin-top: 2.25em;
+      }
+    }
+  }
+
+  &_music {
+    display: flex;
+    // visibility: hidden;
+    justify-content: center;
+    margin-top: 90rem;
+
+    @include media() {
+      visibility: visible;
+      margin-top: 90rem;
+      margin-bottom: 90rem;
+    }
+  }
+}

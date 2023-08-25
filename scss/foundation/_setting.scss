@@ -1,35 +1,47 @@
 ////////////// SCSS変数 //////////////
 
 // 色
-$color_black: #333;
-$color_key: #cd0f3a;
-$color_sub: #f29f99;
-$color_link: #dc1e37;
-$color_hover: rgba($color_link, .8);
-$color_who: #fcbaba;
-$color_work: #18c0d1;
-$color_member: #7dd8c6;
-$color_contact: #f7f7f7;
-$color_gradient: linear-gradient(-35deg, rgba(255, 255, 179, 1) 0%, rgba(141, 203, 207, 1) 42.97%, rgba(0, 69, 99, 1) 100%);
+$color_black: #444;
+$color_bg: #d9eff8;
+$color_nav_bg: #bbdeed;
+$color_blue: #81c1dd;
+$color_lightgray: #c7c7c7;
 
-$color_bg_light: #fcefeb;
+$color_cat_idoll: #fff0ff;
+$color_cat_sugarsugar: #fffcf5;
+$color_cat_other: #c7c7c7;
+
+$color_cf_key: #d97575;
+$color_cf_link: #153ab4;
 
 // フォント
-$gothic: '游ゴシック体', 'Yu Gothic', YuGothic, 'ヒラギノ角ゴ Pro', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'MS Pゴシック', 'MS PGothic', sans-serif;
-$mincho: '游明朝体', 'Yu Mincho', YuMincho, 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'MS P明朝', 'MS PMincho', serif;
+$gothic: 'Noto Sans JP', 'Yu Gothic', YuGothic, 'ヒラギノ角ゴ Pro', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'MS Pゴシック', 'MS PGothic', sans-serif;
+$mincho: 'Zen Old Mincho', '游明朝体', 'Yu Mincho', YuMincho, 'ヒラギノ明朝 Pro', 'Hiragino Mincho Pro', 'MS P明朝', 'MS PMincho', serif;
+$english: 'Marcellus', serif;
+$marugothic: 'Zen Maru Gothic', 'Yu Gothic', YuGothic, 'ヒラギノ角ゴ Pro', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'MS Pゴシック', 'MS PGothic', sans-serif;
 
 // ウェイト
-$light: 400;
+$regular: 400;
 $medium: 500;
 $bold: 700;
-$bold_ios: 600;
-$bolder: 700;
+
+// 標準のサイズ
+$font_size: 18rem;
+
+// 標準の文字間
+$letter_spacing: 0;
+
+// 標準の行間
+$line_height: 1.94444444;
+
+// カーニング（font-feature-settings： "palt"）
+$ffs: unset;
+
+// bodyの背景色
+$body_bg: $color_bg;
 
 // アニメーション速度
-$speed: .6s;
-
-// 標準のline-height
-$line_height: 1.75;
+$speed: .4s;
 
 
 
@@ -46,32 +58,41 @@ $line_height: 1.75;
 
 //コンテンツ幅（px）
 $sm: 520;
-$md: 768;
+$md: 760;
 $lg: 900;
 $xl: 1080;
 $mx: 1280;
 
 
+////////////// デザインカンプに合わせて調整する項目 //////////////
+// PCのコンテンツ幅（可変がスタートする幅）を入れてください
+$board: 1600;
+// スマホカンプのアートボード幅を入れてください
+$board-sp: 390;
+
+
+
+
 
 //メディアクエリ
 $breakpoints: (
-    'def': '(max-width: #{$md}px)',
-    'sm': '(max-width: #{$sm}px)',
-    'md': '(max-width: #{$md}px)',
-    'lg': '(max-width: #{$lg}px)',
-    'xl': '(max-width: #{$xl}px)',
-    'mx': '(max-width: #{$mx}px)',
-    'pc_only': '(min-width: #{$md+1}px)',
-    ) !default;
+  'def': '(max-width: #{$md}px)',
+  'sm': '(max-width: #{$sm}px)',
+  'md': '(max-width: #{$md}px)',
+  'lg': '(max-width: #{$lg}px)',
+  'xl': '(max-width: #{$xl}px)',
+  'mx': '(max-width: #{$mx}px)',
+  'pc_only': '(min-width: #{$md+1}px)',
+  ) !default;
 
 //コンテンツ幅
 $wrapper: (
-    'sm': #{$sm},
-    'md': #{$md},
-    'lg': #{$lg},
-    'xl': #{$xl},
-    'mx': #{$mx},
-    ) !default;
+  'sm': #{$sm},
+  'md': #{$md},
+  'lg': #{$lg},
+  'xl': #{$xl},
+  'mx': #{$mx},
+  ) !default;
 
 
 //メディアクエリ
@@ -89,18 +110,18 @@ $wrapper: (
 
 
 // wrapper自動化
-// @mixin cp_wrapper($max: xl, $w: 90%) {
-//   width: $w;
-//   max-width: #{map-get($wrapper, $max)}px;
-//   margin-right: auto;
-//   margin-left: auto;
+@mixin cp_wrapper($max: xl, $w: 90%) {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: #{map-get($wrapper, $max)}px;
+  width: $w;
 
-//   @include media() {
-//     width: 94%;
-//   }
+  @include media() {
+    width: 94%;
+  }
 
-//   @content;
-// }
+  @content;
+}
 
 // 使用例
 // @include cp_wrapper($max: sm);
@@ -123,13 +144,11 @@ $wrapper: (
 
 
 
-
 // vw自動化（スマホ専用）
-$board: 375; //スマホカンプのアートボード幅を入れてください
-
-@function vw($f: 16, $bd: $board) {
+@function vw($f: 16, $bd: $board-sp) {
   @return #{$f / $bd * 10}vw;
 }
+
 
 // 使用例
 // font-size: vw(20);
@@ -141,15 +160,17 @@ $board: 375; //スマホカンプのアートボード幅を入れてくださ�
 @mixin lineHeight($line-height: #{$line_height}) {
   line-height: #{$line-height};
 
-  &::before, &::after {
+  &::before,
+  &::after {
+    content: '';
     display: block;
     width: 0;
     height: 0;
-    content: '';
   }
 
   &::before {
-    margin-top: calc((1 - #{$line-height}) * .5em); //文字上の余白を消す
+    margin-top: calc((1 - #{$line-height}) * .5em
+    ); //文字上の余白を消す
   }
 
   &::after {
@@ -169,3 +190,30 @@ $board: 375; //スマホカンプのアートボード幅を入れてくださ�
 
 
 // 非サポート
+
+
+// html・body {
+%html {
+  font-size: clamp(calc(6.25% * .25), calc(10vw / $board * 10), 6.25%);
+
+  @include media() {
+    font-size: vw(10);
+  }
+}
+
+%body {
+  background-color: $body_bg;
+  color: $color_black;
+  letter-spacing: $letter_spacing;
+  font-weight: $regular;
+  font-size: $font_size;
+  font-family: $gothic;
+  line-height: $line_height;
+
+  font-feature-settings: $ffs;
+
+  // 行間の上下余白を消す（Figmaの時は不要）
+  & :where(h1, h2, h3, h4, h5, h6, p) {
+    @include lineHeight($line_height);
+  }
+}

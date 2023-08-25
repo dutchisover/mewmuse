@@ -1,0 +1,15 @@
+@use '../../foundation/index' as *;
+
+.page_section {
+  @extend %block;
+}
+
+
+.page_content {
+  padding: 100rem 0 0;
+
+  @include media() {
+    padding-top: 40rem;
+    padding-bottom: 100rem;
+  }
+}

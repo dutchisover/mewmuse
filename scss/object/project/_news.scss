@@ -1,0 +1,138 @@
+@use '../../foundation/index' as *;
+
+.news {
+  // background-image: url(../image/page_bg.png);
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // background-position: top;
+  // background-attachment: fixed;
+
+  &.single {
+    background-image: none;
+  }
+
+  & .single_content p {
+    @include media() {
+      font-size: 12rem;
+      line-height: 2.5;
+    }
+  }
+}
+
+.news_container {
+  padding-bottom: 150rem;
+
+  @include media() {
+    padding-bottom: 100rem;
+  }
+}
+
+.news_category {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5rem 50rem;
+  margin-top: 60rem;
+  font-size: 20rem;
+  font-family: $english;
+
+  @include media() {
+    gap: 5rem 30rem;
+    margin-top: 20rem;
+    font-size: 13rem;
+  }
+
+  & li::before {
+    display: none;
+  }
+
+  li {
+    color: #c7c7c7;
+
+    &.current {
+      color: inherit;
+    }
+  }
+}
+
+.news_list {
+  margin-top: 40rem;
+
+  @include media() {
+    margin-top: 0;
+  }
+}
+
+
+.news_list_item {
+  padding-top: 60rem;
+  padding-bottom: 50rem;
+  border-bottom: 1rem solid $color_lightgray;
+
+  @include media() {
+    padding-top: 40rem;
+    padding-bottom: 30rem;
+  }
+}
+
+.news_list_label {
+  display: flex;
+  align-items: center;
+}
+
+.news_list_date {
+  margin-right: 40rem;
+  min-width: 100rem;
+  letter-spacing: .03em;
+  font-size: 18rem;
+  font-family: $english;
+
+  @include media() {
+    margin-right: 0;
+    min-width: 87rem;
+    font-size: 13rem;
+  }
+}
+
+.news_list_cat {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: .25em 2em;
+  min-width: 110rem;
+  min-height: 20rem;
+  border-radius: 200rem;
+  text-align: center;
+  word-break: break-all;
+  font-size: 14rem;
+  font-family: $english;
+  line-height: 1;
+
+  @include media() {
+    min-width: 92rem;
+    min-height: 16rem;
+    font-size: 11rem;
+  }
+}
+
+.news_list_title {
+  margin-top: 20rem;
+
+  @include media() {
+    margin-top: 16rem;
+    font-size: 13rem;
+    line-height: 1.84615;
+  }
+}
+
+.news_single_title {
+  margin-top: 20rem;
+}
+
+.news .pagenation {
+  margin-top: 80rem;
+}
+
+.news .button_area {
+  margin-top: 110rem;
+}

@@ -1,6 +1,6 @@
 // Utilllity = 強制的に上書きするコード
 
-@use '../foundation/setting' as *;
+@use '../foundation/index' as *;
 
 
 .pc_none {
@@ -12,5 +12,63 @@
 .sp_none {
   @include media() {
     display: none !important;
+  }
+}
+
+
+// トップカルーセル
+.mv {
+  .swiper-slide {
+    position: relative;
+    width: 1600rem;
+    height: 1000rem;
+
+    @include media() {
+      width: 390rem;
+      height: 250rem;
+
+    }
+  }
+
+  .slide_artist_photo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1400rem;
+    object-fit: cover;
+    border-radius: 0 0 0 400rem;
+
+    aspect-ratio: 1400/1000;
+
+    @include media() {
+      width: 352rem;
+      height: 250rem;
+      border-radius: 0 0 0 110rem;
+    }
+  }
+
+  .slide_logo_box {
+    position: absolute;
+    // left: 100rem;
+    right: 1188rem;
+    bottom: 0;
+    width: 322rem;
+    // height: 322rem;
+
+    // aspect-ratio: 322/322;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    @include media() {
+      right: 279rem;
+      width: 83rem;
+    }
+  }
+
+  .slide_artist_logo {
+    width: 100%;
   }
 }

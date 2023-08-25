@@ -1,0 +1,292 @@
+@use './setting' as *;
+
+// 投稿ブロック
+%block {
+  // 大見出し（タイトル）
+  .page_title,
+  .wp-block-post-title {
+    padding-bottom: 20rem;
+    border-bottom: 1rem solid $color_black;
+    font-size: 70rem;
+    font-family: $english;
+
+    @include media() {
+      padding-bottom: 10rem;
+      font-size: 34rem;
+    }
+  }
+
+  // h1.wp-block-heading {
+  //   font-weight: $regular;
+  //   font-size: 30rem;
+  //   line-height: 2.5;
+  // }
+
+  // ボタン
+  .button_area {
+    display: flex;
+    justify-content: center;
+  }
+
+  .wp-block-button,
+  .button_area .button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 200rem;
+    max-width: 100%;
+    height: 50rem;
+    border-radius: 100rem;
+    // background-color: $color_lightgray;
+    background-color: transparent;
+    font-family: $english;
+    transition: .3s;
+
+    @include media() {
+      min-width: 123rem;
+      height: 33rem;
+      font-size: 13rem;
+    }
+    @include hover {
+      &::before {
+        transform: translate(0, 0);
+      }
+    }
+
+    &__link,
+    .button_link {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      border: 1rem solid $color_black;
+      border-radius: inherit;
+      background-color: transparent;
+      color: $color_black;
+
+      @include hover {
+        opacity: 1;
+      }
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: inherit;
+      background-color: $color_lightgray;
+      transition: .3s;
+      transform: translate(5rem, 5rem);
+    }
+  }
+
+  // 個別ボタンスタイル
+  // コンタクト用
+  .button-contact,
+  .button.button-recruit {
+    min-width: 745rem;
+    height: 122rem;
+    font-size: 30rem;
+
+    @include media() {
+      min-width: 270rem;
+      height: 45rem;
+      font-size: 13rem;
+    }
+
+    // ボタン本体
+    .wp-block-button__link,
+    .button_link {
+      border: 0;
+      background-color: #fff;
+
+      // ボタンアイコン
+      &::before {
+        content: '';
+        display: block;
+        margin-right: 33rem;
+        width: 38rem;
+        height: 30rem;
+        background-image: url(../image/icon_contact.svg);
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+
+        @include media() {
+          margin-right: 15rem;
+          width: 12rem;
+          height: 10rem;
+        }
+      }
+    }
+
+    // ボタンの影
+    &::before {
+      background-color: #696969;
+
+      @include media() {
+        transform: translate(2rem, 2rem);
+      }
+    }
+  }
+
+  .button.button-recruit {
+    // ボタンアイコン
+    .button_link {
+      &::before {
+        background-image: url(../image/icon_recruit.svg);
+      }
+    }
+  }
+
+  // テーブル
+  .wp-block-table {
+    font-size: 18rem;
+
+    @include media() {
+      font-size: 12rem;
+    }
+
+    * {
+      border: 0;
+    }
+
+    tr {
+      border-bottom: 1px solid #c7c7c7;
+
+      @include media() {
+        display: flex;
+        flex-direction: column;
+        padding: 40rem 0 30rem;
+      }
+
+      &:first-child {
+        padding-top: 0;
+      }
+    }
+
+    td {
+      padding: 50rem 0;
+
+      @include media() {
+        display: block;
+        padding: 0;
+        width: 100%;
+
+        & + td {
+          margin-top: 15rem;
+        }
+      }
+
+      &:first-child {
+        width: 280rem;
+      }
+    }
+
+    // 下部にボタン
+    & + .wp-block-buttons {
+      margin-top: 150rem;
+
+      @include media() {
+        margin-top: 80rem;
+      }
+    }
+  }
+
+  // リスト
+  ul {
+    list-style-type: none;
+
+    * + & {
+      margin-top: 1.5em;
+    }
+  }
+
+  li {
+    display: flex;
+    justify-content: baseline;
+
+    &::before {
+      content: '・';
+    }
+  }
+
+  p {
+    & + p {
+      margin-top: 1.5em;
+    }
+
+    a {
+      color: #153ab4;
+      text-decoration: underline;
+    }
+  }
+
+
+
+  // プライバシーポリシー
+  .privacy & {
+    font-size: 16rem;
+    font-family: sans-serif;
+    line-height: 2.5;
+
+    @include media() {
+      font-size: 12rem;
+    }
+
+    h2 {
+      margin-top: 3.5em;
+      margin-bottom: 1em;
+      font-weight: 700;
+
+      &::before,
+      &::after {
+        content: none;
+      }
+    }
+
+    p {
+      font-size: inherit;
+      font-family: inherit;
+      line-height: inherit;
+    }
+  }
+
+  // 記事中見出し
+  h3.wp-block-heading {
+    font-size: 30rem;
+    line-height: 2.5;
+
+    @include media() {
+      font-size: 15rem;
+    }
+  }
+
+  // 記事本文
+  .wp-block-column p {
+    margin-top: 25rem;
+    font-weight: $regular;
+    font-size: 20rem;
+    line-height: 2;
+
+    @include media() {
+      font-size: 13rem;
+    }
+  }
+
+  .single.news p {
+    font-size: 18rem;
+    line-height: 2.777;
+  }
+}

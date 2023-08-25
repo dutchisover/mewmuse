@@ -1,5 +1,181 @@
-@use '../foundation/setting' as *;
+@use '../foundation/index' as *;
 
 .header {
-  //
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+
+  &_inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 30rem auto 0;
+    width: 1540rem;
+
+    @include media() {
+      margin: 10rem auto 0;
+      width: 366rem;
+    }
+  }
+
+  &_logo {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 325rem;
+    height: 100rem;
+    outline: 2rem solid $color_blue;
+    outline-offset: -6rem;
+    border: 4rem solid #fff;
+    border-radius: 70rem;
+    background-color: #fff;
+    box-shadow: 0 0 10rem rgba(0, 0, 0, .16);
+    box-shadow: inset 0 0 10rem rgba(0, 0, 0, .16),
+      0 0 10rem rgba(0, 0, 0, .16);
+
+    @include media() {
+      z-index: 1000;
+      width: 144rem;
+      height: 50rem;
+      // justify-content: flex-start;
+      outline: none;
+      border: none;
+      box-shadow: none;
+      box-shadow: 0 0 10rem rgba(0, 0, 0, .16);
+      background-image: url(../image/header_logo-bg.png);
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    & a {
+      display: flex;
+    }
+  }
+
+  &_logo_image {
+    width: 200rem;
+
+    @include media() {
+      width: 104rem;
+    }
+  }
+}
+
+h1.header_logo::before,
+h1.header_logo::after {
+  display: none;
+}
+
+ul.header_nav_list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 65rem;
+  padding-right: 70rem;
+  padding-left: 70rem;
+  height: 100rem;
+  outline: 2rem solid $color_blue;
+  outline-offset: -6rem;
+  border: 4rem solid #fff;
+  border-radius: 70rem;
+  background-color: #fff;
+  box-shadow: inset 0 0 10rem rgba(0, 0, 0, .16),
+    0 0 10rem rgba(0, 0, 0, .16);
+  font-size: 20rem;
+  font-family: $english;
+  margin-top: 0;
+
+  & li::before {
+    display: none;
+  }
+
+  @include media() {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    visibility: hidden;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20rem;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    outline: none;
+    border: none;
+    border-radius: 0;
+    background-color: $color_nav_bg;
+    box-shadow: none;
+    font-size: 23rem;
+    opacity: 0;
+    transition: .4s;
+
+    // スマホメニュー表示
+    .nav_open & {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+.nav_button,
+.nav_button-close {
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 50rem;
+  height: 50rem;
+  filter: drop-shadow(0 0 10rem rgba(0, 0, 0, .16));
+  background-image: url(../image/header_button-bg.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+// ハンバーガーボタン
+.header_nav_button_image {
+  width: 17rem;
+}
+
+.nav_button {
+  .nav_open & {
+    display: none;
+    opacity: 0;
+  }
+}
+
+// ハンバーガーボタン（閉じる）
+.nav_button-close {
+  display: none;
+  opacity: 0;
+
+
+  .nav_open & {
+    display: flex;
+    opacity: 1;
+  }
+}
+
+.header_link {
+  display: flex;
+  gap: 40rem;
+  margin-top: 30rem;
+
+  &-ticket {
+    width: 35rem;
+  }
+
+  &-contact {
+    width: 30rem;
+  }
+
+  &-store {
+    width: 30rem;
+  }
 }

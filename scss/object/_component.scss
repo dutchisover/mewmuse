@@ -1,9 +1,10 @@
 // Component = 繰り返し使う部品
 
-@use '../foundation/setting' as *;
+@use '../foundation/index' as *;
 
 
 .button {
+
   //
   @include hover {
     //
@@ -12,4 +13,131 @@
   &_area {
     //
   }
+}
+
+// 画像リンク ホバーすると拡大
+.image_link {
+  @include hover {
+    opacity: 1;
+
+    & img {
+      opacity: 1;
+      transition: .6s all;
+      transform: scale(1.05);
+    }
+  }
+}
+
+// ページネーション
+.pagenation .wp-pagenavi {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20rem;
+
+  & .pages {
+    display: none;
+  }
+
+  a,
+  span {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 40rem;
+    height: 40rem;
+    border-radius: 50%;
+    background-color: #fff;
+    color: $color_black;
+    font-size: 14rem;
+    font-family: $english;
+
+    @include media() {
+      width: 30rem;
+      height: 30rem;
+      font-size: 12rem;
+    }
+  }
+
+  .first,
+  .last {
+    display: none;
+  }
+
+  .nextpostslink,
+  .previouspostslink {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border: none;
+    background-color: transparent;
+    color: $color_black;
+    text-indent: -200%;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: block;
+      width: .5em;
+      height: .5em;
+      border: 1px solid #696969;
+      border-top: 0;
+      border-left: 0;
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+
+  .previouspostslink {
+    &::before {
+      transform: translate(-50%, -50%) rotate(-225deg);
+    }
+  }
+
+  .current {
+    background-color: $color_lightgray;
+    color: #fff;
+    pointer-events: none;
+  }
+}
+
+// 投稿ない部分 Coming soon 表示
+.comingsoon {
+  font-size: 70rem;
+  font-family: $english;
+  margin-top: 50rem;
+  margin-right: auto;
+  margin-left: auto;
+  letter-spacing: .05em;
+  text-align: center;
+
+  @include media() {
+    font-size: 34rem;
+  }
+
+  // トップページでのComing soon 表示
+  .top & {
+    padding: 170rem 0 200rem;
+
+    @include media() {
+      padding: 80rem 0;
+    }
+  }
+
+  .top .top_artist & {
+    padding-top: 100rem;
+  }
+
+  // 各ページの表示調整
+  .news &,
+  .schedule & {
+    margin-top: 150rem;
+  }
+
+  .recruit & {
+    padding-top: 50rem;
+  }
+
 }

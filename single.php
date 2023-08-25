@@ -3,7 +3,7 @@
 
 <main class="single">
 
-	<article class="single_wrapper">
+	<article class="single_wrapper wrapper">
 
 		<?php
 		if (have_posts()) {
@@ -39,6 +39,12 @@
 					<?php
 					the_content();
 					?>
+				</div>
+
+				<div class="button_area">
+					<div class="button">
+						<a href="../" class="button_link" onclick="window.history.back(); return false;">back</a>
+					</div>
 				</div>
 		<?php
 			endwhile;

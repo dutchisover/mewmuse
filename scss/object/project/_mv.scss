@@ -1,1 +1,19 @@
-@use '../../foundation/setting' as *;
+@use '../../foundation/index' as *;
+
+.mv {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1600rem;
+
+  &::before {
+    @include media() {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 70rem;
+      background-color: #fff;
+      opacity: .5;
+    }
+
+  }
+}

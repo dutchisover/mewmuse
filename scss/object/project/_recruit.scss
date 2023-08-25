@@ -1,0 +1,123 @@
+@use '../../foundation/index' as *;
+
+.recruit {
+  padding-bottom: 0;
+
+  &_copy {
+    align-items: 2;
+    margin-top: 60rem;
+    text-align: center;
+    font-size: 30rem;
+    font-family: $mincho;
+
+    @include media() {
+      margin-top: 40rem;
+      font-size: 15rem;
+    }
+
+    span {
+      font-size: 25rem;
+
+      @include media() {
+        font-size: 12rem;
+      }
+    }
+  }
+
+  &_container {
+    margin-top: 100rem;
+    margin-bottom: 150rem;
+
+    @include media() {
+      margin-top: 40rem;
+      margin-bottom: 80rem;
+    }
+
+    & + .button_area {
+      margin: 150rem 0;
+
+      @include media() {
+        margin: 80rem 0 100rem;
+      }
+    }
+  }
+
+  &_list {
+    &_item {
+      & + & {
+        margin-top: 40rem;
+
+        @include media() {
+          margin-top: 20rem;
+        }
+      }
+
+      a {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 40rem 30rem;
+        min-height: 112rem;
+        border-radius: 26rem;
+        background-color: #fff;
+        font-size: 22rem;
+        line-height: 2;
+
+        @include media() {
+          padding: 20rem 35rem 20rem 20rem;
+          min-height: 47rem;
+          border-radius: 16rem;
+          font-size: 12rem;
+          line-height: 1.66666667;
+        }
+        @include hover {
+          color: #999;
+          opacity: 1;
+
+          &::after {
+            right: 60rem;
+          }
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          right: 73rem;
+          display: block;
+          width: 1em;
+          height: 1em;
+          border: 2rem solid #c7c7c7;
+          border-top: 0;
+          border-left: 0;
+          transition: $speed;
+          transform: translateY(-50%) rotate(-45deg);
+
+          @include media() {
+            right: 20rem;
+            width: .75em;
+            height: .75em;
+            border: 1rem solid #c7c7c7;
+            border-top: 0;
+            border-left: 0;
+          }
+        }
+      }
+    }
+
+    &_title {
+      font-size: inherit;
+      line-height: inherit;
+    }
+  }
+
+  &_title {
+    margin-bottom: 70rem;
+    font-size: 30rem;
+
+    @include media() {
+      margin-bottom: 40rem;
+      font-size: 15rem;
+    }
+  }
+}

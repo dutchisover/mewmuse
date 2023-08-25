@@ -9,7 +9,7 @@ $single_title = esc_html(get_post_type_object(get_post_type())->labels->singular
 ?>
 
 
-<main class="post <?= $archive_slug; ?>">
+<main class="post <?= $archive_slug; ?> wrapper">
 	<h2 class="post_title page_title"><?= $single_title; ?></h2>
 
 	<div class="post_inner">

@@ -1,5 +1,127 @@
-@use '../foundation/setting' as *;
+@use '../foundation/index' as *;
 
 .footer {
-  //
+  padding-top: 70rem;
+  padding-bottom: 45rem;
+  outline: 2rem solid $color_blue;
+  outline-offset: -6rem;
+  border: 4rem solid #fff;
+  background-color: #fff;
+  box-shadow: inset 0 0 10rem rgba(0, 0, 0, .16);
+  font-family: $english;
+
+  @include media() {
+    padding-top: 30rem;
+    padding-bottom: 18rem;
+    outline: 1rem solid $color_blue;
+    outline-offset: -4rem;
+    box-shadow: inset 0 0 6rem rgba(0, 0, 0, .16);
+  }
+
+
+  &_inner {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &_nav {
+    margin: 0 auto;
+  }
+
+  &_nav_list {
+    display: flex;
+    align-items: flex-end;
+    gap: 60rem;
+    color: $color_lightgray;
+    font-size: 14rem;
+
+    @include media() {
+      gap: 30rem;
+      font-size: 11rem;
+    }
+  }
+
+  &_nav_link {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  &_nav_link::before {
+    content: '';
+    display: block;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  // & .link-twitter::before {
+  //   margin-bottom: 4.6rem;
+  //   width: 50rem;
+  //   height: 40rem;
+  //   background-image: url(../image/icon_twitter.svg);
+
+  //   @include media() {
+  //     width: 30rem;
+  //     height: 24rem;
+  //   }
+  // }
+
+  & .link-ticket::before {
+
+    width: 50rem;
+    height: 50rem;
+    background-image: url(../image/icon_ticket.svg);
+
+    @include media() {
+      width: 34rem;
+      height: 34rem;
+    }
+  }
+
+  & .link-contact::before {
+    margin-bottom: 4.6rem;
+    width: 50rem;
+    height: 40rem;
+    background-image: url(../image/icon_contact.svg);
+
+    @include media() {
+      width: 30rem;
+      height: 24rem;
+    }
+  }
+
+  & .link-store::before {
+    width: 50rem;
+    height: 50rem;
+    background-image: url(../image/icon_store.svg);
+
+    @include media() {
+      width: 30rem;
+      height: 29rem;
+    }
+  }
+
+  &_bottom {
+    margin-top: 30rem;
+    letter-spacing: .03em;
+    font-size: 15rem;
+
+    @include media() {
+      margin-top: 20rem;
+      font-size: 10rem;
+    }
+  }
+
+  &_copyright {
+    margin-right: 45rem;
+    font-size: 15rem;
+
+    @include media() {
+      margin-right: 30rem;
+      font-size: 10rem;
+    }
+  }
 }

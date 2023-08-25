@@ -1,10 +1,20 @@
-@use '../foundation/setting' as *;
+@use '../foundation/index' as *;
 
 // コンテンツ幅用の汎用class
 .wrapper {
-  //
+  margin: 0 auto;
+  width: 1200rem;
+
+  @include media() {
+    width: 314rem;
+  }
 }
 
 .wrapper-large {
-  //
+  margin: 0 auto;
+  width: 1400rem;
+
+  @include media() {
+    width: 334rem;
+  }
 }

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="49.999" height="50" viewBox="0 0 49.999 50">
+  <g id="idoll_logo" transform="translate(-0.011 0.006)">
+    <g id="グループ_603" data-name="グループ 603" transform="translate(0.011 -0.006)">
+      <g id="グループ_601" data-name="グループ 601" transform="translate(6.734 21.007)">
+        <rect id="長方形_186" data-name="長方形 186" width="25.832" height="5.647" transform="translate(3.993 6.735) rotate(45)" fill="#696969"/>
+        <rect id="長方形_187" data-name="長方形 187" width="35.355" height="5.647" transform="translate(43.266 3.993) rotate(135)" fill="#696969"/>
+      </g>
+      <g id="グループ_602" data-name="グループ 602" transform="translate(0 0)">
+        <rect id="長方形_188" data-name="長方形 188" width="25.832" height="5.647" transform="translate(39.272 22.259) rotate(-135)" fill="#696969"/>
+        <rect id="長方形_189" data-name="長方形 189" width="35.355" height="5.647" transform="translate(0 25) rotate(-45)" fill="#696969"/>
+      </g>
+    </g>
+    <g id="グループ_604" data-name="グループ 604" transform="translate(16.41 19.005)">
+      <rect id="長方形_190" data-name="長方形 190" width="2.802" height="2.802" transform="translate(0 1.981) rotate(-45)" fill="#696969"/>
+      <path id="パス_2175" data-name="パス 2175" d="M816.709,580.75l-4.649,6.3,4.649,6.3,4.649-6.3Z" transform="translate(-801.875 -580.75)" fill="#696969"/>
+      <path id="パス_2176" data-name="パス 2176" d="M672.79,593.356l6.215-6.3-6.215-6.3" transform="translate(-667.164 -580.75)" fill="#696969"/>
+      <path id="パス_2177" data-name="パス 2177" d="M504.908,700.1l-1.979,1.97-1.979-1.97V693.14l1.979,1.97,1.979-1.97Z" transform="translate(-500.95 -689.461)" fill="#696969"/>
+    </g>
+  </g>
+</svg>

@@ -1,5 +1,26 @@
-@use '../../foundation/setting' as *;
+@use '../../foundation/index' as *;
 
-.single {
-  //
+main.single {
+  @extend %block;
+}
+
+.single_title {
+  padding-bottom: 19rem;
+  border-bottom: 1rem solid $color_black;
+  font-size: 40rem;
+  font-family: $gothic;
+
+  @include media() {
+    font-size: 20rem;
+    line-height: 1.5;
+  }
+}
+
+.single_content {
+  margin-top: 80rem;
+
+  @include media() {
+    margin-top: 40rem;
+    
+  }
 }

@@ -28,11 +28,16 @@ function add_files()
 	// wp_enqueue_style('slick-theme', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css', "", $cache);
 	// wp_enqueue_script('slick', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', array('jquery'), $cache, false);
 
+	// Swiper読み込み（CSS、JS）
+	wp_enqueue_style('swiper', '//cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css', "", $cache);
+	wp_enqueue_script('swiper', '//cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js', array(), $cache, true);
+
+
 	// inview読み込み
 	// wp_enqueue_script('inview', get_template_directory_uri() . '/js/jquery.inview.min.js', array(), $cache, true);
 
 	// スクロール固定読み込み
-	// wp_enqueue_script('bodyScrollLock', get_template_directory_uri() . '/js/bodyScrollLock.min.js', array(), $cache, true);
+	wp_enqueue_script('bodyScrollLock', get_template_directory_uri() . '/js/bodyScrollLock.min.js', array(), $cache, true);
 
 	// AOS読み込み（CSS、JS）
 	// wp_enqueue_style('aos', 'https://unpkg.com/aos@2.3.1/dist/aos.css', "", $cache);
@@ -106,77 +111,69 @@ add_theme_support('custom-units', 'px', 'em', 'rem', 'vh', 'vw');
 
 
 ////////////////// ACFプロ用 オプションページ //////////////////
-// acf_add_options_page(
-// 	array(
-// 		'page_title' => 'バナー登録', // ページで表示されるタイトル
-// 		'menu_title' => 'バナー登録', // メニューで表示されるタイトル
-// 		'menu_slug'  => 'top-banner', // 管理画面のメニュースラッグ
-// 		'capability' => 'edit_posts', // このメニューが表示されるユーザーの権限
-// 		'redirect'   => true, // メニュークリック時、sub_pageにリダイレクトするか（デフォルトはtrue）
-// 		'position' => 5,
-// 		'icon_url' => 'dashicons-welcome-write-blog'
-// 	)
-// );
+acf_add_options_page(
+	array(
+		'page_title' => '404音源', // ページで表示されるタイトル
+		'menu_title' => '404音源', // メニューで表示されるタイトル
+		'menu_slug'  => 'music404', // 管理画面のメニュースラッグ
+		'capability' => 'edit_posts', // このメニューが表示されるユーザーの権限
+		'redirect'   => true, // メニュークリック時、sub_pageにリダイレクトするか（デフォルトはtrue）
+		'position' => 5,
+		'icon_url' => 'dashicons-welcome-write-blog'
+	)
+);
 
 
 
 
-////////////////// OGPタグ/Twitterカード設定を出力 //////////////////
-function my_meta_ogp()
+// 投稿画面にCSSを当てる
+function add_admin_style()
 {
-	//設定
-	$ogp_image_url = get_stylesheet_directory_uri() . '/image/ogp.jpg';
-	$twitter_id = "@" . "";
-	$facebook_id = "";
-	//設定ここまで
+	$path_css = get_template_directory_uri() . '/css/editor.css';
+	wp_enqueue_style('admin_style', $path_css);
+	// $path_js = get_template_directory_uri() . '/assets/js/admin.js';
+	// wp_enqueue_script('admin_script', $path_css);
+}
+add_action('admin_enqueue_scripts', 'add_admin_style');
 
-	if (is_front_page() || is_home() || is_singular()) {
-		global $post;
-		$ogp_title = '';
-		$ogp_descr = '';
-		$ogp_url = '';
-		$ogp_img = '';
-		$insert = '';
 
-		if (is_singular()) { //記事＆固定ページ
-			setup_postdata($post);
-			$ogp_title = $post->post_title;
-			$ogp_descr = mb_substr(get_the_excerpt(), 0, 100);
-			$ogp_url = get_permalink();
-			wp_reset_postdata();
-		} elseif (is_front_page() || is_home()) { //トップページ
-			$ogp_title = get_bloginfo('name');
-			$ogp_descr = get_bloginfo('description');
-			$ogp_url = home_url();
+
+// カスタム投稿名recruitの投稿を全て取得し、各投稿のタイトルをuser_workのプルダウンの値として挿入する
+function set_select_children($children, $atts)
+{
+	if ($atts['name'] == 'user_work') {
+		$args = array(
+			'post_type' => 'recruit',
+			'posts_per_page' => -1,
+			'post_status' => 'publish'
+		);
+		$posts = get_posts($args);
+		foreach ($posts as $post) {
+			$children[$post->post_title] = $post->post_title;
 		}
-
-		//og:type
-		$ogp_type = (is_front_page() || is_home()) ? 'website' : 'article';
-
-		//og:image
-		if (is_singular() && has_post_thumbnail()) {
-			$ps_thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
-			$ogp_img = $ps_thumb[0];
-		} else {
-			$ogp_img = $ogp_image_url;
-		}
-
-		//出力するOGPタグをまとめる
-		$insert .= '<meta property="og:title" content="' . esc_attr($ogp_title) . '" />' . "\n";
-		$insert .= '<meta property="og:description" content="' . esc_attr($ogp_descr) . '" />' . "\n";
-		$insert .= '<meta property="og:type" content="' . $ogp_type . '" />' . "\n";
-		$insert .= '<meta property="og:url" content="' . esc_url($ogp_url) . '" />' . "\n";
-		$insert .= '<meta property="og:image" content="' . esc_url($ogp_img) . '" />' . "\n";
-		$insert .= '<meta property="og:site_name" content="' . esc_attr(get_bloginfo('name')) . '" />' . "\n";
-		$insert .= '<meta name="twitter:card" content="summary_large_image" />' . "\n";
-		$insert .= '<meta name="twitter:site" content="' . $twitter_id . '" />' . "\n";
-		$insert .= '<meta property="og:locale" content="ja_JP" />' . "\n";
-
-		//facebookのapp_id（設定する場合）
-		$insert .= '<meta property="fb:app_id" content="' . $facebook_id . '">' . "\n";
-		//app_idを設定しない場合ここまで消す
-
-		echo $insert;
 	}
-} //END my_meta_ogp
-add_action('wp_head', 'my_meta_ogp'); //headにOGPを出力
+	return $children;
+}
+add_filter('mwform_choices_mw-wp-form-124', 'set_select_children', 10, 2);
+
+
+
+// タグ一覧のURL正規化
+
+// add_filter('user_trailingslashit', 'rem_cat_func');
+// function rem_cat_func($link)
+// {
+// 	return str_replace("/schedule_cat/", "schedule/", $link);
+// }
+// add_action('init', 'rem_cat_flush_rules');
+// function rem_cat_flush_rules()
+// {
+// 	global $wp_rewrite;
+// 	$wp_rewrite->flush_rules();
+// }
+// add_filter('generate_rewrite_rules', 'rem_cat_rewrite');
+// function rem_cat_rewrite($wp_rewrite)
+// {
+// 	$new_rules = array('(.+)/page/(.+)/?' => 'index.php?category_name=' . $wp_rewrite->preg_index(1) . '&paged=' . $wp_rewrite->preg_index(2));
+// 	$wp_rewrite->rules = $new_rules + $wp_rewrite->rules;
+// }

@@ -1,19 +1,16 @@
 <footer class="footer">
 	<div class="footer_inner">
-		<a href="<?= home_url(); ?>" class="footer_logo">
-			<img src="<?= get_template_directory_uri(); ?>/image/footer_logo.svg" alt="" class="footer_logo_image">
-		</a>
-
 		<div class="footer_nav">
 			<ul class="footer_nav_list">
-				<li><a href="<?= home_url(); ?>/news">お知らせ</a></li>
+				<li><a href="https://t.livepocket.jp/event/search?word=mewmuse株式会社" target="_blank" rel="noopener noreferrer" class="footer_nav_link link-ticket">ticket</a></li>
+				<li><a href="<?= home_url(); ?>/contact" class="footer_nav_link link-contact">contact</a></li>
+				<li><a href="https://mewmuse.stores.jp" target="_blank" rel="noopener noreferrer" class="footer_nav_link link-store">store</a></li>
 			</ul>
 		</div>
-
-	</div>
-
-	<div class="footer_bottom">
-		<small class="footer_copyright"></small>
+		<div class="footer_bottom">
+			<small class="footer_copyright">©︎ mew muse inc.</small>
+			<a href="<?= home_url(); ?>/privacy" class="footer_link">Privacy Policy</a>
+		</div>
 	</div>
 </footer>
 
